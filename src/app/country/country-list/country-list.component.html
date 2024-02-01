@@ -1,0 +1,52 @@
+<div class="filter">
+  <input
+    type="text"
+    placeholder="Search for a country..."
+    (input)="searchByName($event)"
+  />
+  <select (change)="filterByRegion($event)">
+    <option value="" disabled selected hidden>Filter by Region</option>
+    <option value="Africa">Africa</option>
+    <option value="Americas">Americas</option>
+    <option value="Asia">Asia</option>
+    <option value="Europe">Europe</option>
+    <option value="Oceania">Oceania</option>
+    <option value="all">All</option>
+  </select>
+</div>
+<p id="no-result" *ngIf="!filteredCountries.length">No result</p>
+<div
+  *ngFor="let country of filteredCountries"
+  class="card"
+  style="width: 16rem"
+  routerLinkActive="active"
+  routerLink="/country/{{ country.name }}"
+>
+  <img
+    class="card-img-top"
+    src="{{ country.flagImage }}"
+    alt="{{ country.name }} flag"
+  />
+  <div class="card-body">
+    <h5 class="card-title fs-home-m fw-700">{{ country.name }}</h5>
+    <p class="card-text fs-home-s">
+      <span class="fw-600">Population: </span>{{ country.population }}
+    </p>
+    <p class="card-text fs-home-s">
+      <span class="fw-600">Region: </span>{{ country.region }}
+    </p>
+    <p class="card-text fs-home-s">
+      <span class="fw-600">Capital: </span>{{ country.capital }}
+    </p>
+  </div>
+</div>
+
+<button
+  id="back-to-top"
+  *ngIf="showScrollButton"
+  (click)="scrollToTop()"
+  class="btn position-fixed bottom-0 end-0 m-3"
+  title="Back to top"
+>
+  <i class="bi bi-arrow-up"></i>
+</button>

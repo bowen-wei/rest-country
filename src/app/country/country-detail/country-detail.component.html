@@ -1,0 +1,41 @@
+<div>
+  <button id="return-button" [routerLink]="['/']">
+    <i class="bi bi-arrow-left"></i> Back
+  </button>
+</div>
+
+<main>
+  <img src="{{ country.flagImage }}" alt="{{ country.name }} flag" />
+  <div class="info">
+    <h2 class="fw-700">{{ country.name }}</h2>
+    <div class="details">
+      <div id="one">
+        <p><span class="fw-600">Native Name: </span>{{ country.nativeName }}</p>
+        <p><span class="fw-600">Population: </span>{{ country.population }}</p>
+        <p><span class="fw-600">Region: </span>{{ country.region }}</p>
+        <p><span class="fw-600">Sub Region: </span>{{ country.subregion }}</p>
+        <p><span class="fw-600">Capital: </span>{{ country.capital }}</p>
+      </div>
+      <div id="two">
+        <p>
+          <span class="fw-600">Top level Domain: </span>{{ country.domain }}
+        </p>
+        <p><span class="fw-600">Currencies: </span>{{ country.currencies }}</p>
+        <p><span class="fw-600">Languages: </span>{{ country.languages }}</p>
+      </div>
+    </div>
+
+    <div class="border-countries">
+      <span class="fw-600">Border Countries:</span>
+      <div class="border-countries-list">
+        <button
+          *ngFor="let borderCountry of country.borders"
+          class="border-country"
+          (click)="navigateToCountry(borderCountry)"
+        >
+          {{ borderCountry }}
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
