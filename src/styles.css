@@ -255,6 +255,7 @@ app-country-detail {
   /* border: 1px solid red; */
   padding-inline: var(--padding-inline-desktop);
   margin-top: 4rem;
+  margin-bottom: 6rem;
   margin-inline: auto;
 }
 
